@@ -51,7 +51,8 @@ const customers = [
 for (let i = 0; i < customers.length; i++) {
   const customer = customers[i];
     let total = 0;
-
+    
+const customerType = customer.type;
 const extra = extraDiscount(customer.type);
 
     for (let j = 0; j < customer.cart.length; j++) {
