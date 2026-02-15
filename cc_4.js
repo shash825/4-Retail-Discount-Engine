@@ -1,3 +1,4 @@
+//step 2
 const products = [
     {name: 'Chair', category: 'household', price: 50, inventory: 20},
     {name: 'Shirt', category: 'apparel', price: 25, inventory: 100},
@@ -5,7 +6,7 @@ const products = [
     {name: 'Pumpkin', category: 'groceries', price: 5, inventory: 15},
     {name: 'Sofa', category: 'household', price: 500, inventory: 5},
 ];
-
+//step 3
 for (const p of products) {
     let discount = 0;
 
@@ -26,19 +27,20 @@ for (const p of products) {
             console.log("Nothing for you");
     }
     p.discountedPrice = p.price * (1 - discount);
-    p.discount = discount;
 }
 
-let customerType = 'student';
-
-let extraDiscount = 0;
-if (customerType === 'student') {
-    extraDiscount = 0.05;
-} else if (customerType === 'veteran') {
-    extraDiscount = 0.07;
-} else {
-    extraDiscount = 0;
+//step 4
+function extraDiscount(customerType) {
+    switch (customerType) {
+        case 'student':
+            return 0.05;
+        case 'senior':
+            return 0.07;
+        default:
+            return 0;
+    }
 }
 
+//step 5
 
-    
+
