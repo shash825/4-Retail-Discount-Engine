@@ -43,4 +43,31 @@ function extraDiscount(customerType) {
 
 //step 5
 
+const customers = [
+{type: 'regular', cart: [{name: 'Chair', qty: 1}, {name: 'Shirt', qty: 2}]},
+{type: 'student', cart: [{name: 'Sofa', qty: 1}, {name: 'Lamp', qty: 2}]},
+{type: 'senior', cart: [{name: 'Pumpkin', qty: 10}, {name: 'Shirt', qty: 1}]},
+];
+
+for (let i = 0; i < customers.length; i++) {
+  const customer = customers[i];
+    let total = 0;
+
+const extra = extraDiscount(customer.type);
+
+    for (let j = 0; j < customer.cart.length; j++) {
+        const cartItem = customer.cart[j];
+        const product = products.find(p => p.name === cartItem.name);
+        if (!product) continue;
+
+        const qtyToBuy = Math.min(cartItem.qty, product.inventory);
+        const basePrice = typeof product.discountedPrice === 'number' ? product.discountedPrice : product.price;
+        const finalPricePerUnit = basePrice * (1 - extra);
+        total += finalPricePerUnit * qtyToBuy;
+        product.inventory -= qtyToBuy;
+    }
+
+    console.log(`Customer ${i + 1}: Total = $${total.toFixed(2)}`);
+}
+
 
