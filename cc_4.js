@@ -26,6 +26,18 @@ for (const p of products) {
             console.log("Nothing for you");
     }
     p.discountedPrice = p.price * (1 - discount);
+    p.discount = discount;
+}
+
+let customerType = 'student';
+
+let extraDiscount = 0;
+if (customerType === 'student') {
+    extraDiscount = 0.05;
+} else if (customerType === 'veteran') {
+    extraDiscount = 0.07;
+} else {
+    extraDiscount = 0;
 }
 
 
