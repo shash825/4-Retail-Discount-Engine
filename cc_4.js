@@ -24,7 +24,7 @@ for (const p of products) {
             discount = 0.2;
             break;
         default:
-            console.log("Nothing for you");
+            discount = 0;
     }
     p.discountedPrice = p.price * (1 - discount);
 }
