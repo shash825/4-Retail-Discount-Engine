@@ -31,14 +31,13 @@ for (const p of products) {
 
 //step 4
 function extraDiscount(customerType) {
-    switch (customerType) {
-        case 'student':
-            return 0.05;
-        case 'senior':
-            return 0.07;
-        default:
-            return 0;
-    }
+  if (customerType === "student") {
+    return 0.05;
+  } else if (customerType === "senior") {
+    return 0.07;
+  } else {
+    return 0;
+  }
 }
 
 //step 5
@@ -64,10 +63,31 @@ const extra = extraDiscount(customer.type);
         const basePrice = typeof product.discountedPrice === 'number' ? product.discountedPrice : product.price;
         const finalPricePerUnit = basePrice * (1 - extra);
         total += finalPricePerUnit * qtyToBuy;
-        product.inventory -= qtyToBuy;
+        product.inventory -= qtyToBuy; 
     }
 
     console.log(`Customer ${i + 1}: Total = $${total.toFixed(2)}`);
 }
 
+//step 6
+
+console.log("\nFirst product details:");
+
+const newProduct = products[0];
+
+for (const key in newProduct) {
+  console.log(key + ": " + newProduct[key]);
+}
+
+//step 7
+
+console.log("\nAll products:");
+
+for (const p of products) {
+  console.log("\nProduct: " + p.name);
+
+  for (const [key, value] of Object.entries(p)) {
+    console.log(key + ": " + value);
+  }
+}
 
